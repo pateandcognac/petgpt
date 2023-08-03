@@ -1,0 +1,71 @@
+- content: Amazing! thank you! can you please rewrite to avoid the use of while-wend?
+    You'll have to use an if-then goto instead.
+  role: user
+- content: 'Absolutely, we can replace the while-wend loop with an if-then-goto loop.
+    Here''s the modified code:
+
+
+    ```basic
+
+    {l:init}
+
+    rem program to plot a circle on the screen using the midpoint circle algorithm
+
+    rem keywords:  circle, graphics, line plotting, poke, integer arithmetic
+
+    screen_memory=32768:screen_width=40:screen_height=25:screen_center_x=screen_width/2:screen_center_y=screen_height/2:character_code=42
+
+    print ""{clear}""
+
+
+    {l:input_radius}
+
+    input ""{home}enter radius of the circle:""; radius%
+
+
+    {l:draw_circle}
+
+    x% = radius%
+
+    y% = 0
+
+    error% = 1 - x%
+
+
+    {l:circle_loop}
+
+    if x% < y% then goto {l:end_circle}
+
+    poke screen_memory+(screen_center_y+y%)*screen_width+(screen_center_x+x%), character_code
+
+    poke screen_memory+(screen_center_y+y%)*screen_width+(screen_center_x-x%), character_code
+
+    poke screen_memory+(screen_center_y-y%)*screen_width+(screen_center_x+x%), character_code
+
+    poke screen_memory+(screen_center_y-y%)*screen_width+(screen_center_x-x%), character_code
+
+    poke screen_memory+(screen_center_y+x%)*screen_width+(screen_center_x+y%), character_code
+
+    poke screen_memory+(screen_center_y+x%)*screen_width+(screen_center_x-y%), character_code
+
+    poke screen_memory+(screen_center_y-x%)*screen_width+(screen_center_x+y%), character_code
+
+    poke screen_memory+(screen_center_y-x%)*screen_width+(screen_center_x-y%), character_code
+
+    y% = y% + 1
+
+    if error% >= 0 then x% = x% - 1: error% = error% + 2*(y% - x%) + 1
+
+    if error% < 0 then error% = error% + 2*y% + 1
+
+    goto {l:circle_loop}
+
+
+    {l:end_circle}
+
+    ```
+
+
+    This program will behave exactly the same as the previous one, but it uses an
+    if-then-goto loop instead of a while-wend loop.'
+  role: assistant

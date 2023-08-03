@@ -1,0 +1,66 @@
+- content: Hi! Please write a program that plots a circle on screen. thank you!
+  role: user
+- content: 'Sure, I''d be happy to help with that. Here''s a simple program that plots
+    a circle on the screen using the midpoint circle algorithm:
+
+
+    ```basic
+
+    {l:init}
+
+    rem circle plotting program
+
+    rem keywords:  circle, graphics, plotting, poke, midpoint circle algorithm
+
+    screen_memory=32768:screen_width=40:screen_height=25:radius=10:character_code=42
+
+    center_x=screen_width/2:center_y=screen_height/2
+
+
+    {l:plot_circle}
+
+    x=radius:y=0:error=1-radius
+
+
+    while x>=y
+
+    poke screen_memory+(center_y+y)*screen_width+(center_x+x), character_code
+
+    poke screen_memory+(center_y+y)*screen_width+(center_x-x), character_code
+
+    poke screen_memory+(center_y-x)*screen_width+(center_x+y), character_code
+
+    poke screen_memory+(center_y-x)*screen_width+(center_x-y), character_code
+
+    poke screen_memory+(center_y-x)*screen_width+(center_x+x), character_code
+
+    poke screen_memory+(center_y-x)*screen_width+(center_x-x), character_code
+
+    poke screen_memory+(center_y+y)*screen_width+(center_x-y), character_code
+
+    poke screen_memory+(center_y+y)*screen_width+(center_x+x), character_code
+
+
+    if error<=0 then
+
+    y=y+1
+
+    error=error+2*y+1
+
+    else
+
+    x=x-1
+
+    error=error-2*x+1
+
+    endif
+
+    wend
+
+    ```
+
+
+    This program uses the midpoint circle algorithm to plot a circle on the screen.
+    The circle is centered at the middle of the screen and has a radius of 10. The
+    character used to plot the circle is character code 42.'
+  role: assistant

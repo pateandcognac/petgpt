@@ -1,0 +1,5 @@
+- content: Hello! this is a test :)  can you write me a program that draws a circle
+    on the screen please?
+  role: user
+- content: Hello! How can I assist you with your Commodore PET programming today?
+  role: assistant

@@ -1,0 +1,149 @@
+api_call:
+  search_terms:
+  - database: few_shot_prompt_code_examples
+    search_term: python plot circle
+response:
+- database: few_shot_prompt_code_examples
+  results:
+  - '```basic
+
+    {l:init}
+
+    rem program to plot a vector from the screen center at a user-defined angle, distance,
+    and character
+
+    rem keywords:  vector, trigonometry, user input, graphics, line plotting, poke,
+    turtle
+
+    screen_memory=32768:screen_width=40:screen_height=25:radian_conversion_factor=~/180:screen_center_x=screen_width/2:screen_center_y=screen_height/2:character_code=42
+
+    print ""{clear}""
+
+
+    {l:input_loop}
+
+    input ""{home}angle, distance, character code:""; angle_degrees,distance,character_code:
+    angle_degrees = angle_degrees * radian_conversion_factor
+
+
+    {l:draw_line}
+
+    for radius=0 to distance
+
+    x_coordinate=screen_center_x+int(radius*cos(angle_degrees)+0.5)
+
+    y_coordinate=screen_center_y-int(radius*sin(angle_degrees)+0.5)
+
+    poke screen_memory+y_coordinate*screen_width+x_coordinate+screen_center_x, character_code
+
+    next radius
+
+    goto {l:input_loop}
+
+    ```'
+  - '```basic
+
+    {l:init}
+
+    rem tank with projectile simulation
+
+    rem physics, trajectory, simulation, angle, power
+
+    print ""{clear}""
+
+    input ""enter angle (degrees): "";angle
+
+    input ""enter power: "";power
+
+    gravity=9.8:rem gravity constant
+
+    angle=angle*~/180:rem convert degrees to radians
+
+
+    {l:display_tank}
+
+    rem put the tank on screen
+
+    poke 32768+24*40+20,30 :rem up arrow char
+
+
+    {l:plot_trajectory}
+
+    rem plot the trajectory
+
+    for time=0 to 25 step 1/power
+
+    x=int(power*time*cos(angle))
+
+    y=int(power*time*sin(angle)-0.5*gravity*time*time)
+
+    if y<-1 then goto {l:end_program}
+
+    poke 32768+20+x+40*(23-y),42:rem place projectile in trajectory
+
+    next time
+
+
+    {l:end_program}
+
+    end
+
+    ```'
+  - '```basic
+
+    {l:init}
+
+    rem random line screen saver
+
+    rem keywords:  screen saver, graphics, random, line drawing, patterns, interpolation
+
+    screen_memory=32768:screen_width=40:screen_height=25:rem setup screen related
+    vars
+
+
+    {l:draw_random_lines}
+
+    print ""{clear}""
+
+    for i=1 to 16
+
+    x1=int(rnd(1)*screen_width)+1:y1=int(rnd(1)*screen_height)+1:rem random start
+    position
+
+    x2=int(rnd(1)*screen_width)+1:y2=int(rnd(1)*screen_height)+1:rem random end position
+
+    c=rnd(1)*255+1:rem random drawing character
+
+    gosub {l:draw_line}
+
+    next i
+
+    goto {l:draw_random_lines}
+
+
+    {l:draw_line}
+
+    rem draw line from (x1, y1) to (x2, y2)
+
+    dx=x2-x1:dy=y2-y1:rem calculate differences
+
+    if abs(dx)>=abs(dy) then length=abs(dx):goto {l:set_length}
+
+    length=abs(dy)
+
+    {l:set_length}
+
+    for j=.01 to length
+
+    x=x1+sgn(dx)*j*abs(dx)/length
+
+    y=y1+sgn(dy)*j*abs(dy)/length
+
+    poke screen_memory+int(y)*screen_width+int(x),c
+
+    next j
+
+    return
+
+    ```'
+  term: python plot circle

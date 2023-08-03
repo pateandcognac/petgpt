@@ -1,0 +1,9 @@
+- content: Hello, please generate a program that draws a circle in the center of the
+    screen. thank you
+  role: user
+- content: Hello! How can I assist you with your Commodore PET programming today?
+  role: assistant
+- content: what is few shot prompting?
+  role: user
+- content: Hello! How can I assist you with your Commodore PET programming today?
+  role: assistant

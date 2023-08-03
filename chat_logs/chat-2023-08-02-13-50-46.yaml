@@ -1,0 +1,4 @@
+- content: this is a test
+  role: user
+- content: Hello! How can I assist you with your Commodore PET programming today?
+  role: assistant

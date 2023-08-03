@@ -1,0 +1,442 @@
+api_call:
+  search_terms:
+  - database: few_shot_prompt_code_examples
+    search_term: coding chat bot
+  - database: few_shot_prompt_code_examples
+    search_term: user conversation
+  - database: few_shot_prompt_code_examples
+    search_term: salient results
+response:
+- database: few_shot_prompt_code_examples
+  results:
+  - '```basic
+
+    {l:init}
+
+    rem random line screen saver
+
+    rem keywords:  screen saver, graphics, random, line drawing, patterns, interpolation
+
+    screen_memory=32768:screen_width=40:screen_height=25:rem setup screen related
+    vars
+
+
+    {l:draw_random_lines}
+
+    print ""{clear}""
+
+    for i=1 to 16
+
+    x1=int(rnd(1)*screen_width)+1:y1=int(rnd(1)*screen_height)+1:rem random start
+    position
+
+    x2=int(rnd(1)*screen_width)+1:y2=int(rnd(1)*screen_height)+1:rem random end position
+
+    c=rnd(1)*255+1:rem random drawing character
+
+    gosub {l:draw_line}
+
+    next i
+
+    goto {l:draw_random_lines}
+
+
+    {l:draw_line}
+
+    rem draw line from (x1, y1) to (x2, y2)
+
+    dx=x2-x1:dy=y2-y1:rem calculate differences
+
+    if abs(dx)>=abs(dy) then length=abs(dx):goto {l:set_length}
+
+    length=abs(dy)
+
+    {l:set_length}
+
+    for j=.01 to length
+
+    x=x1+sgn(dx)*j*abs(dx)/length
+
+    y=y1+sgn(dy)*j*abs(dy)/length
+
+    poke screen_memory+int(y)*screen_width+int(x),c
+
+    next j
+
+    return
+
+    ```'
+  - '```basic
+
+    {l:init}
+
+    rem program to plot a vector from the screen center at a user-defined angle, distance,
+    and character
+
+    rem keywords:  vector, trigonometry, user input, graphics, line plotting, poke,
+    turtle
+
+    screen_memory=32768:screen_width=40:screen_height=25:radian_conversion_factor=~/180:screen_center_x=screen_width/2:screen_center_y=screen_height/2:character_code=42
+
+    print ""{clear}""
+
+
+    {l:input_loop}
+
+    input ""{home}angle, distance, character code:""; angle_degrees,distance,character_code:
+    angle_degrees = angle_degrees * radian_conversion_factor
+
+
+    {l:draw_line}
+
+    for radius=0 to distance
+
+    x_coordinate=screen_center_x+int(radius*cos(angle_degrees)+0.5)
+
+    y_coordinate=screen_center_y-int(radius*sin(angle_degrees)+0.5)
+
+    poke screen_memory+y_coordinate*screen_width+x_coordinate+screen_center_x, character_code
+
+    next radius
+
+    goto {l:input_loop}
+
+    ```'
+  - '```basic
+
+    {l:init}
+
+    rem rule 30 cellular automaton
+
+    rem keywords: cellular automaton, rule 30, binary, simulation, pattern generation
+
+    print ""{clear}""
+
+    input ""number of rows:""; num_rows
+
+    input ""starting row (binary, 1s and 0s):""; starting_row$
+
+    row_length = len(starting_row$)
+
+    print tab((40 - row_length) / 2); starting_row$
+
+
+    {l:generate_rows}
+
+    for i = 1 to num_rows - 1
+
+    temp_row$ = """"
+
+    for j = 1 to row_length
+
+    cell = 0
+
+    if j > 1 then cell = cell + 2 * (val(mid$(starting_row$, j - 1, 1)))
+
+    cell = cell + val(mid$(starting_row$, j, 1))
+
+    if j < row_length then cell = cell + 4 * (val(mid$(starting_row$, j + 1, 1)))
+
+    temp_row$ = temp_row$ + mid$(""01011010"", cell + 1, 1)
+
+    next j
+
+    print tab((40 - row_length) / 2); temp_row$
+
+    starting_row$ = temp_row$
+
+    next i
+
+    ```'
+  term: coding chat bot
+- database: few_shot_prompt_code_examples
+  results:
+  - '```basic
+
+    {l:init}
+
+    rem program to plot a vector from the screen center at a user-defined angle, distance,
+    and character
+
+    rem keywords:  vector, trigonometry, user input, graphics, line plotting, poke,
+    turtle
+
+    screen_memory=32768:screen_width=40:screen_height=25:radian_conversion_factor=~/180:screen_center_x=screen_width/2:screen_center_y=screen_height/2:character_code=42
+
+    print ""{clear}""
+
+
+    {l:input_loop}
+
+    input ""{home}angle, distance, character code:""; angle_degrees,distance,character_code:
+    angle_degrees = angle_degrees * radian_conversion_factor
+
+
+    {l:draw_line}
+
+    for radius=0 to distance
+
+    x_coordinate=screen_center_x+int(radius*cos(angle_degrees)+0.5)
+
+    y_coordinate=screen_center_y-int(radius*sin(angle_degrees)+0.5)
+
+    poke screen_memory+y_coordinate*screen_width+x_coordinate+screen_center_x, character_code
+
+    next radius
+
+    goto {l:input_loop}
+
+    ```'
+  - '```basic
+
+    {l:init}
+
+    rem random line screen saver
+
+    rem keywords:  screen saver, graphics, random, line drawing, patterns, interpolation
+
+    screen_memory=32768:screen_width=40:screen_height=25:rem setup screen related
+    vars
+
+
+    {l:draw_random_lines}
+
+    print ""{clear}""
+
+    for i=1 to 16
+
+    x1=int(rnd(1)*screen_width)+1:y1=int(rnd(1)*screen_height)+1:rem random start
+    position
+
+    x2=int(rnd(1)*screen_width)+1:y2=int(rnd(1)*screen_height)+1:rem random end position
+
+    c=rnd(1)*255+1:rem random drawing character
+
+    gosub {l:draw_line}
+
+    next i
+
+    goto {l:draw_random_lines}
+
+
+    {l:draw_line}
+
+    rem draw line from (x1, y1) to (x2, y2)
+
+    dx=x2-x1:dy=y2-y1:rem calculate differences
+
+    if abs(dx)>=abs(dy) then length=abs(dx):goto {l:set_length}
+
+    length=abs(dy)
+
+    {l:set_length}
+
+    for j=.01 to length
+
+    x=x1+sgn(dx)*j*abs(dx)/length
+
+    y=y1+sgn(dy)*j*abs(dy)/length
+
+    poke screen_memory+int(y)*screen_width+int(x),c
+
+    next j
+
+    return
+
+    ```'
+  - '```basic
+
+    {l:init}
+
+    rem bouncing balls
+
+    rem animation, arrays, screen memory, randomization
+
+    print ""{clear}""
+
+    screen_memory=32768
+
+    dim ball_x(5),ball_y(5),ball_dx(5),ball_dy(5)
+
+
+    {l:initialize_balls}
+
+    for i=1 to 5
+
+    ball_x(i)=rnd(1)*40
+
+    ball_y(i)=rnd(1)*25
+
+    ball_dx(i)=rnd(1)+.25
+
+    ball_dy(i)=rnd(1)+.25
+
+    next i
+
+
+    {l:main_loop}
+
+    for i=1 to 5
+
+    poke screen_memory+(int(ball_y(i))-1)*40+ball_x(i)-1,32 :rem erase the old ball
+    position}
+
+    ball_x(i)=ball_x(i)+ball_dx(i)
+
+    ball_y(i)=ball_y(i)+ball_dy(i)
+
+    if ball_x(i)<1 or ball_x(i)>40 then ball_dx(i)=-ball_dx(i)
+
+    if ball_y(i)<1 or ball_y(i)>25 then ball_dy(i)=-ball_dy(i)
+
+    poke screen_memory+(int(ball_y(i))-1)*40+ball_x(i)-1,81 : rem draw the new ball
+    position
+
+    next i
+
+    goto {l:main_loop}
+
+    ```'
+  term: user conversation
+- database: few_shot_prompt_code_examples
+  results:
+  - '```basic
+
+    {l:init}
+
+    rem program to plot a vector from the screen center at a user-defined angle, distance,
+    and character
+
+    rem keywords:  vector, trigonometry, user input, graphics, line plotting, poke,
+    turtle
+
+    screen_memory=32768:screen_width=40:screen_height=25:radian_conversion_factor=~/180:screen_center_x=screen_width/2:screen_center_y=screen_height/2:character_code=42
+
+    print ""{clear}""
+
+
+    {l:input_loop}
+
+    input ""{home}angle, distance, character code:""; angle_degrees,distance,character_code:
+    angle_degrees = angle_degrees * radian_conversion_factor
+
+
+    {l:draw_line}
+
+    for radius=0 to distance
+
+    x_coordinate=screen_center_x+int(radius*cos(angle_degrees)+0.5)
+
+    y_coordinate=screen_center_y-int(radius*sin(angle_degrees)+0.5)
+
+    poke screen_memory+y_coordinate*screen_width+x_coordinate+screen_center_x, character_code
+
+    next radius
+
+    goto {l:input_loop}
+
+    ```'
+  - '```basic
+
+    {l:init}
+
+    rem random line screen saver
+
+    rem keywords:  screen saver, graphics, random, line drawing, patterns, interpolation
+
+    screen_memory=32768:screen_width=40:screen_height=25:rem setup screen related
+    vars
+
+
+    {l:draw_random_lines}
+
+    print ""{clear}""
+
+    for i=1 to 16
+
+    x1=int(rnd(1)*screen_width)+1:y1=int(rnd(1)*screen_height)+1:rem random start
+    position
+
+    x2=int(rnd(1)*screen_width)+1:y2=int(rnd(1)*screen_height)+1:rem random end position
+
+    c=rnd(1)*255+1:rem random drawing character
+
+    gosub {l:draw_line}
+
+    next i
+
+    goto {l:draw_random_lines}
+
+
+    {l:draw_line}
+
+    rem draw line from (x1, y1) to (x2, y2)
+
+    dx=x2-x1:dy=y2-y1:rem calculate differences
+
+    if abs(dx)>=abs(dy) then length=abs(dx):goto {l:set_length}
+
+    length=abs(dy)
+
+    {l:set_length}
+
+    for j=.01 to length
+
+    x=x1+sgn(dx)*j*abs(dx)/length
+
+    y=y1+sgn(dy)*j*abs(dy)/length
+
+    poke screen_memory+int(y)*screen_width+int(x),c
+
+    next j
+
+    return
+
+    ```'
+  - '```basic
+
+    {l:init}
+
+    rem rule 30 cellular automaton
+
+    rem keywords: cellular automaton, rule 30, binary, simulation, pattern generation
+
+    print ""{clear}""
+
+    input ""number of rows:""; num_rows
+
+    input ""starting row (binary, 1s and 0s):""; starting_row$
+
+    row_length = len(starting_row$)
+
+    print tab((40 - row_length) / 2); starting_row$
+
+
+    {l:generate_rows}
+
+    for i = 1 to num_rows - 1
+
+    temp_row$ = """"
+
+    for j = 1 to row_length
+
+    cell = 0
+
+    if j > 1 then cell = cell + 2 * (val(mid$(starting_row$, j - 1, 1)))
+
+    cell = cell + val(mid$(starting_row$, j, 1))
+
+    if j < row_length then cell = cell + 4 * (val(mid$(starting_row$, j + 1, 1)))
+
+    temp_row$ = temp_row$ + mid$(""01011010"", cell + 1, 1)
+
+    next j
+
+    print tab((40 - row_length) / 2); temp_row$
+
+    starting_row$ = temp_row$
+
+    next i
+
+    ```'
+  term: salient results

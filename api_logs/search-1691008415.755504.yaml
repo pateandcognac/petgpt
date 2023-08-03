@@ -1,0 +1,145 @@
+api_call:
+  search_terms:
+  - database: few_shot_prompt_code_examples
+    search_term: midpoint circle algorithm
+response:
+- database: few_shot_prompt_code_examples
+  results:
+  - '```basic
+
+    {l:init}
+
+    rem program to plot a vector from the screen center at a user-defined angle, distance,
+    and character
+
+    rem keywords:  vector, trigonometry, user input, graphics, line plotting, poke,
+    turtle
+
+    screen_memory=32768:screen_width=40:screen_height=25:radian_conversion_factor=~/180:screen_center_x=screen_width/2:screen_center_y=screen_height/2:character_code=42
+
+    print ""{clear}""
+
+
+    {l:input_loop}
+
+    input ""{home}angle, distance, character code:""; angle_degrees,distance,character_code:
+    angle_degrees = angle_degrees * radian_conversion_factor
+
+
+    {l:draw_line}
+
+    for radius=0 to distance
+
+    x_coordinate=screen_center_x+int(radius*cos(angle_degrees)+0.5)
+
+    y_coordinate=screen_center_y-int(radius*sin(angle_degrees)+0.5)
+
+    poke screen_memory+y_coordinate*screen_width+x_coordinate+screen_center_x, character_code
+
+    next radius
+
+    goto {l:input_loop}
+
+    ```'
+  - '```basic
+
+    {l:init}
+
+    rem tank with projectile simulation
+
+    rem physics, trajectory, simulation, angle, power
+
+    print ""{clear}""
+
+    input ""enter angle (degrees): "";angle
+
+    input ""enter power: "";power
+
+    gravity=9.8:rem gravity constant
+
+    angle=angle*~/180:rem convert degrees to radians
+
+
+    {l:display_tank}
+
+    rem put the tank on screen
+
+    poke 32768+24*40+20,30 :rem up arrow char
+
+
+    {l:plot_trajectory}
+
+    rem plot the trajectory
+
+    for time=0 to 25 step 1/power
+
+    x=int(power*time*cos(angle))
+
+    y=int(power*time*sin(angle)-0.5*gravity*time*time)
+
+    if y<-1 then goto {l:end_program}
+
+    poke 32768+20+x+40*(23-y),42:rem place projectile in trajectory
+
+    next time
+
+
+    {l:end_program}
+
+    end
+
+    ```'
+  - '```basic
+
+    {l:init}
+
+    rem bouncing balls
+
+    rem animation, arrays, screen memory, randomization
+
+    print ""{clear}""
+
+    screen_memory=32768
+
+    dim ball_x(5),ball_y(5),ball_dx(5),ball_dy(5)
+
+
+    {l:initialize_balls}
+
+    for i=1 to 5
+
+    ball_x(i)=rnd(1)*40
+
+    ball_y(i)=rnd(1)*25
+
+    ball_dx(i)=rnd(1)+.25
+
+    ball_dy(i)=rnd(1)+.25
+
+    next i
+
+
+    {l:main_loop}
+
+    for i=1 to 5
+
+    poke screen_memory+(int(ball_y(i))-1)*40+ball_x(i)-1,32 :rem erase the old ball
+    position}
+
+    ball_x(i)=ball_x(i)+ball_dx(i)
+
+    ball_y(i)=ball_y(i)+ball_dy(i)
+
+    if ball_x(i)<1 or ball_x(i)>40 then ball_dx(i)=-ball_dx(i)
+
+    if ball_y(i)<1 or ball_y(i)>25 then ball_dy(i)=-ball_dy(i)
+
+    poke screen_memory+(int(ball_y(i))-1)*40+ball_x(i)-1,81 : rem draw the new ball
+    position
+
+    next i
+
+    goto {l:main_loop}
+
+    ```'
+  term: midpoint circle algorithm

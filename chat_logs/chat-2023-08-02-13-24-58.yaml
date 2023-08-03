@@ -1,0 +1,5 @@
+- content: Hello, please generate a program that draws a circle in the center of the
+    screen. thank you
+  role: user
+- content: Hello, how can I assist you with your Commodore PET programming needs today?
+  role: assistant
