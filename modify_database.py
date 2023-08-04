@@ -10,8 +10,9 @@ import hashlib
 from chromadb.utils import embedding_functions
 
 # Initialize ChromaDB client
-chroma_client = chromadb.Client(
-    Settings(persist_directory=CHROMADB_PERSIST_DIR, chroma_db_impl=CHROMADB_IMPL))
+chroma_client = chromadb.PersistentClient(
+    path=CHROMADB_PERSIST_DIR, settings=Settings(allow_reset=True))
+
 
 # Initialize prompt_toolkit session
 session = PromptSession()
@@ -124,7 +125,6 @@ def add_items():
     # Generate a hash of the document and use the first 8 characters as the ID
     document_id = hashlib.sha256(document.encode()).hexdigest()[:8]
     collection.add(documents=[document], ids=[document_id])
-    chroma_client.persist()
     print("\nItem added.")
 
 
@@ -139,7 +139,6 @@ def update_items():
     documents = session.prompt(
         "\nEnter the new documents for the items (separated by commas): ").split(",")
     collection.upsert(ids=ids, documents=documents)
-    chroma_client.persist()
     print("\nItems updated.")
 
 
